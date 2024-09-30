@@ -16,15 +16,22 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Install dependencies
-        run: npm install
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.16.0' # Specify the exact version you want to use
 
-      - name: Run tests
-        run: npm test # Optional, remove if not using tests
+      - name: Install dependencies
+        run: |
+          cd counter # Navigate to the counter directory
+          npm install
 
       - name: Build the project
-        run: npm run build
- - name: Log in to Docker Hub
+        run: |
+          cd counter # Navigate to the counter directory
+          npm run build
+          
+      - name: Log in to Docker Hub
         uses: docker/login-action@v2
         with:
           username: ${{ secrets.DOCKER_USERNAME }}

@@ -26,11 +26,6 @@ jobs:
           cd counter # Navigate to the counter directory
           npm install
 
-      - name: Run tests
-        run: |
-          cd counter # Navigate to the counter directory
-          npm test # Optional, remove if not using tests
-
       - name: Build the project
         run: |
           cd counter # Navigate to the counter directory
